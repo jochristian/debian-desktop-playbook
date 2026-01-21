@@ -1,3 +1,6 @@
+## Credits
+Based on the excellent work by GitHub user [jhx0](https://github.com/jhx0).
+
 # debian-desktop-playbook
 A personal **Ansible** **Playbook** to deploy/configure a **Debian** desktop system to my needs with **KDE** (**Xfce** is also available) and many additional packages.
 
