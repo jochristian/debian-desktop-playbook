@@ -3,8 +3,8 @@ ansible_become_flags: "-"
 
 ssh_port: 22
 
-user_name: x
-user_group_name: x
+user_name: jochristian
+user_group_name: jochristian
 
 fail2ban_sshd_port: 22
 
@@ -24,5 +24,6 @@ docker: false
 podman: true
 lxc: false
 distrobox: true
+homebrew: true
 
 reboot: false

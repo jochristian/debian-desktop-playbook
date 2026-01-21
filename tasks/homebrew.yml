@@ -1,0 +1,55 @@
+---
+- name: (Homebrew) Install dependencies
+  apt:
+    name:
+      - build-essential
+      - curl
+      - file
+      - git
+      - procps
+    state: present
+    update_cache: yes
+
+- name: (Homebrew) Create destination directory
+  file:
+    path: /home/linuxbrew
+    state: directory
+    owner: "{{ user_name }}"
+    group: "{{ user_group_name | default(user_name) }}"
+    mode: '0755'
+
+- name: (Homebrew) Check if brew is already installed
+  stat:
+    path: /home/linuxbrew/.linuxbrew/bin/brew
+  register: brew_bin
+
+- name: (Homebrew) Download and install Homebrew
+  shell: |
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  become: true
+  become_user: "{{ user_name }}"
+  when: not brew_bin.stat.exists
+
+- name: (Homebrew) Configure shell environment (Path)
+  lineinfile:
+    path: "/home/{{ user_name }}/.bashrc"
+    line: 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
+    state: present
+  become: true
+  become_user: "{{ user_name }}"
+
+- name: (Homebrew) Ensure build tools are configured
+  shell: /home/linuxbrew/.linuxbrew/bin/brew install gcc
+  become: true
+  become_user: "{{ user_name }}"
+  when: not brew_bin.stat.exists
+  ignore_errors: true
+
+- name: (Homebrew) Install configured packages
+  community.general.homebrew:
+    name: "{{ homebrew_packages }}"
+    state: present
+    path: /home/linuxbrew/.linuxbrew/bin
+  become: true
+  become_user: "{{ user_name }}"
+  when: homebrew_packages is defined

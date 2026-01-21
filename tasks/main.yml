@@ -56,6 +56,10 @@
 - import_tasks: tasks/packages.yml
   tags: packages
 
+- import_tasks: tasks/homebrew.yml
+  tags: homebrew
+  when: homebrew
+
 - import_tasks: tasks/groups.yml
   tags: groups
 
