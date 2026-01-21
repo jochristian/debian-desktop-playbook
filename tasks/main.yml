@@ -11,8 +11,8 @@
 - import_tasks: tasks/dotfiles.yml
   tags: dotfiles
 
-- import_tasks: tasks/postfix.yml
-  tags: postfix
+#- import_tasks: tasks/postfix.yml
+#  tags: postfix
 
 - import_tasks: tasks/sshd.yml
   tags: sshd
@@ -20,8 +20,8 @@
 - import_tasks: tasks/sudo.yml
   tags: sudo
 
-- import_tasks: tasks/doas.yml
-  tags: doas
+#- import_tasks: tasks/doas.yml
+#  tags: doas
 
 - import_tasks: tasks/ntp.yml
   tags: ntp
@@ -35,8 +35,8 @@
 - import_tasks: tasks/fstrim.yml
   tags: fstrim
 
-- import_tasks: tasks/fail2ban.yml
-  tags: fail2ban
+#- import_tasks: tasks/fail2ban.yml
+#  tags: fail2ban
 
 - import_tasks: tasks/xorg.yml
   tags: xorg
