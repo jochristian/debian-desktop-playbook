@@ -11,18 +11,18 @@ fail2ban_sshd_port: 22
 ntp_servers: 0.de.pool.ntp.org 1.de.pool.ntp.org 2.de.pool.ntp.org
 ntp_fallback_servers: 0.debian.pool.ntp.org 1.debian.pool.ntp.org 2.debian.pool.ntp.org
 
-use_kde: true
+use_kde: false
 use_xfce: false
-use_gnome: false
+use_gnome: true
 
-use_kvm: true
+use_kvm: false
 flatpak: true
 external: true
-gaming: true
-use_firewall: false
+gaming: false
+use_firewall: true
 docker: false
 podman: true
-lxc: true
+lxc: false
 distrobox: true
 
 reboot: false
