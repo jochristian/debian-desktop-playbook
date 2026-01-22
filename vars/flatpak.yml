@@ -1,13 +1,8 @@
 ---
 flatpak_packages:
   - org.signal.Signal
-  - im.riot.Riot
   - org.raspberrypi.rpi-imager
-  - org.jdownloader.JDownloader
-  - com.rafaelmardojai.Blanket
   - com.discordapp.Discord
-  - io.github.thetumultuousunicornofdarkness.cpu-x
-  - fi.skyjake.Lagrange
 
 flatpak_gaming_packages:
   - net.supertuxkart.SuperTuxKart
