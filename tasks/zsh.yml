@@ -24,6 +24,21 @@
         remote_src: yes
         owner: "{{ user_name }}"
         group: "{{ user_group_name }}"
+      become_user: "{{ user_name }}"
+
+    - name: Clone Powerlevel10k
+      git:
+        repo: 'https://github.com/romkatv/powerlevel10k.git'
+        dest: "/home/{{ user_name }}/.oh-my-zsh/custom/themes/powerlevel10k"
+        depth: 1
+      become_user: "{{ user_name }}"
+
+    - name: Set ZSH_THEME to powerlevel10k
+      lineinfile:
+        path: "/home/{{ user_name }}/.zshrc"
+        regexp: '^ZSH_THEME='
+        line: 'ZSH_THEME="powerlevel10k/powerlevel10k"'
+      become_user: "{{ user_name }}"
   
     - name: Set Zsh as default shell
       user:
