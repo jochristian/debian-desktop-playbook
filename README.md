@@ -9,7 +9,7 @@ Adapted for **Debian 13** (**Trixie**)
 ## Features:
 - **KDE** desktop by default. **Xfce** and **Gnome** (**Task**) available.
 - Many additional packages from the official repos (**LibreOffice**, **Firefox-ESR**, etc.)
-- Installs and configures **sudo** and **doas** (**opendoas**)
+- Installs and configures **sudo**
 - **Flatpaks**: **Discord**, **Element**, **Signal**, **Raspberry Pi Imager**, **JDownloader**
 - External applications available: **VSCodium**, **Brave**
 - Gaming: **Steam**, **Wine**, **Minecraft**  and retro gaming emulators (**Mupen64Plus**, **Mednafen/Mednaffe**)
@@ -17,6 +17,7 @@ Adapted for **Debian 13** (**Trixie**)
 - Installs **Docker**, **Podman**
 - Deploys **LXC**
 - Also installs **Distrobox**
+- Installs **Homebrew**
 - Virtualization packages (**libvirt/QEMU/Virt-Manager**)
 - (**Optional**) Installs and sets up **UFW** (**Deny** incoming, **Allow** outgoing, allow **SSH** access)
 - Most software comes from the main repos!
@@ -31,6 +32,7 @@ I made the decision to make these not be installed by default since I personally
 
 There is nothing big to see here. I like the defaults and don't really change much of anything. YMMV. 😎   
 (Stock **KDE** desktop pictured here - if you must have a screenshot)
+This setup is now more minimal than before, so you have a cleaner slate to start with.
 
 ## Hint
 This Playbook mainly servers my own needs - feel free to adapt it to yours!
@@ -74,16 +76,13 @@ apt
 upgrade
 vim
 dotfiles
-postfix
 sshd
 sudo
-doas
 groups
 ntp
 sysctl
 grub
 fstrim
-fail2ban
 xorg
 kde
 xfce
@@ -99,6 +98,7 @@ docker
 podman
 lxc
 distrobox
+homebrew
 flatpak (Multiple Flatpaks installed)
 brave (external)
 reboot
