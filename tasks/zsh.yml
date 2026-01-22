@@ -25,6 +25,25 @@
       
       # Starship
       eval "$(starship init zsh)"
+  when: install_starship
+
+- name: Create .config directory
+  file:
+    path: "/home/{{ user_name }}/.config"
+    state: directory
+    owner: "{{ user_name }}"
+    group: "{{ user_group_name }}"
+    mode: '0755'
+  when: install_starship
+
+- name: Copy Starship configuration
+  copy:
+    src: files/starship/starship.toml
+    dest: "/home/{{ user_name }}/.config/starship.toml"
+    owner: "{{ user_name }}"
+    group: "{{ user_group_name }}"
+    mode: '0644'
+  when: install_starship
 
 - name: Set Zsh as default shell
   user:

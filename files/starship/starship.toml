@@ -1,0 +1,84 @@
+# Starship Configuration
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+vicmd_symbol = "[❮](bold green)"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold cyan"
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+
+[git_status]
+style = "bold red"
+format = '([\[$all_status$ahead_behind\]]($style) )'
+
+[git_metrics]
+disabled = false
+
+[python]
+symbol = "🐍 "
+style = "yellow"
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[ansible]
+symbol = "💠 "
+style = "bold blue"
+format = '[$symbol$version]($style) '
+disabled = false
+
+[docker_context]
+symbol = "🐳 "
+style = "blue"
+format = '[$symbol$context]($style) '
+
+[kubernetes]
+symbol = "☸ "
+style = "cyan"
+format = '[$symbol$context( \($namespace\))]($style) '
+disabled = false
+
+[package]
+symbol = "📦 "
+disabled = true
+
+[sudo]
+symbol = "🧙 "
+disabled = false
+style = "bold red"
+format = '[ $symbol]($style)'
+
+[cmd_duration]
+min_time = 2000
+style = "bold yellow"
+
+[container]
+disabled = false
+format = '[$symbol \[$name\]]($style) '
+
+[hostname]
+ssh_only = true
+style = "bold green"
+format = '[$hostname]($style) '
+
+[username]
+style_user = "white bold"
+style_root = "black bold red"
+format = "[$user]($style)@"
+disabled = false
+show_always = false
+
+[memory_usage]
+disabled = true
+threshold = -1
+symbol = " "
+style = "bold dimmed white"
