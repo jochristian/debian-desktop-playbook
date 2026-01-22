@@ -1,0 +1,43 @@
+- name: Installing wget and gpg
+  apt:
+    name:
+      - wget
+      - gpg
+    state: present
+
+- name: Add Microsoft GPG key
+  shell: wget -qO - https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | dd of=/usr/share/keyrings/microsoft-archive-keyring.gpg
+  args:
+    creates: /usr/share/keyrings/microsoft-archive-keyring.gpg
+
+- name: Adding VS Code repository
+  copy:
+    src: files/vscode/vscode.sources
+    dest: /etc/apt/sources.list.d/vscode.sources
+    owner: root
+    group: root
+    mode: '0644'
+  notify: update apt cache
+
+- name: Remove VSCodium repository
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /etc/apt/sources.list.d/vscodium.sources
+    - /etc/apt/sources.list.d/vscodium.list
+    - /usr/share/keyrings/vscodium-archive-keyring.gpg
+  notify: update apt cache
+
+- name: Update APT cache
+  meta: flush_handlers
+
+- name: Installing VS Code
+  apt:
+    name: code
+    state: present
+
+- name: Removing VSCodium
+  apt:
+    name: codium
+    state: absent
