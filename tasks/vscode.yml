@@ -19,16 +19,6 @@
     mode: '0644'
   notify: update apt cache
 
-- name: Remove VSCodium repository
-  file:
-    path: "{{ item }}"
-    state: absent
-  loop:
-    - /etc/apt/sources.list.d/vscodium.sources
-    - /etc/apt/sources.list.d/vscodium.list
-    - /usr/share/keyrings/vscodium-archive-keyring.gpg
-  notify: update apt cache
-
 - name: Update APT cache
   meta: flush_handlers
 
@@ -36,8 +26,3 @@
   apt:
     name: code
     state: present
-
-- name: Removing VSCodium
-  apt:
-    name: codium
-    state: absent
