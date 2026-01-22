@@ -11,57 +11,12 @@
 - import_tasks: tasks/dotfiles.yml
   tags: dotfiles
 
-- import_tasks: tasks/zsh.yml
-  tags: zsh
-
-#- import_tasks: tasks/postfix.yml
-#  tags: postfix
-
-- import_tasks: tasks/ssh.yml
-  tags: ssh
-
-- import_tasks: tasks/sudo.yml
-  tags: sudo
-
-#- import_tasks: tasks/doas.yml
-#  tags: doas
-
-- import_tasks: tasks/ntp.yml
-  tags: ntp
-
-- import_tasks: tasks/sysctl.yml
-  tags: sysctl
-
-- import_tasks: tasks/grub.yml
-  tags: grub
-
-- import_tasks: tasks/fstrim.yml
-  tags: fstrim
-
-#- import_tasks: tasks/fail2ban.yml
-#  tags: fail2ban
-
-#- import_tasks: tasks/xorg.yml
-#  tags: xorg
-
-#- import_tasks: tasks/xfce.yml
-#  tags: xfce
-#  when: use_xfce
-
-#- import_tasks: tasks/kde.yml
-#  tags: kde
-#  when: use_kde
-
-#- import_tasks: tasks/gnome.yml
-#  tags: gnome
-#  when: use_gnome
-
-- import_tasks: tasks/packages.yml
-  tags: packages
-
 - import_tasks: tasks/homebrew.yml
   tags: homebrew
   when: homebrew
+
+- import_tasks: tasks/zsh.yml
+  tags: zsh
 
 - import_tasks: tasks/groups.yml
   tags: groups

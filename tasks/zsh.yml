@@ -1,9 +1,7 @@
 ---
-- name: Install Zsh and Starship
+- name: Install Zsh
   apt:
-    name:
-      - zsh
-      - starship
+    name: zsh
     state: present
 
 - name: Create basic .zshrc with Starship
@@ -13,6 +11,9 @@
     group: "{{ user_group_name }}"
     mode: '0644'
     content: |
+      # Homebrew
+      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
       # Basic Zsh config
       autoload -Uz compinit
       compinit
