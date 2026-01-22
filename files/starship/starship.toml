@@ -1,122 +1,116 @@
-#Location: ~/.config/starship.toml
-#What_is_starship: https://starship.rs/
+"$schema" = "https://starship.rs/config-schema.json"
 
-add_newline = true
-command_timeout = 2000
+palette = "catppuccin_mocha"
 
-format = """$env_var$os$username$hostname$kubernetes$directory$git_branch$git_status$python
+format = """
+$python\
+$conda\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
 $character
 """
 
-[character]
-success_symbol = "╰⎯"
-error_symbol = "╰⎯"
-# ╭╴ ╰─
-
-[env_var]
-symbol = "╭╴"
-variable = 'SHELL'
-format = "$symbol"
-disabled = false
-
-
-#warp-Drop ugly default prompt characters
-#success_symbol = ""
-#error_symbol = ""
-
-# ---
-
-[os]
-format = '[$symbol](bold white) '   
-disabled = false
-
-[os.symbols]
-Windows = ' '
-Arch = '󰣇'
-Ubuntu = ''
-Macos = '󰀵'
-Unknown = '󰠥'
-
-# ---y
-
-# Shows the username
-[username]
-style_user = 'yellow bold'
-style_root = 'black bold'
-format = '[//](black bold) [$user](#2883ff) ' # 2883ff
-disabled = false
-show_always = true
-
-# Shows the hostname
-[hostname]
-ssh_only = false
-format = '[//](black bold) [$hostname](bold blue) '
-disabled = false
-
-# Shows current directory
+# ------------------------
+# Directory
+# ------------------------
 [directory]
-truncation_length = 0
-truncation_symbol = '…/'
-home_symbol = '~'
-# read_only_style = '197'
-read_only = '  '
-format = '[//](black bold) [$path]($style)[$read_only]($read_only_style) '
-style = '#7ed1fb' # yellow bold
+style = "fg:blue"
 
+# ------------------------
+# Character
+# ------------------------
+[character]
+success_symbol = "[❯](fg:mauve)"
+error_symbol = "[❯](fg:red)"
+vimcmd_symbol = "[❮](fg:green)"
 
-# Shows current git branch
+# ------------------------
+# Git
+# ------------------------
 [git_branch]
-# symbol = ' '
-symbol = ' '
-format = '[//](black bold) [$symbol\[$branch\]]($style) '
-# truncation_length = 0
-# truncation_symbol = '…/'
-style = 'bold green'
+format = "[$branch]($style) "
+style = "fg:overlay1"
 
-# Shows current git status
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "fg:overlay1"
+
 [git_status]
-disabled = true
-format = '[ $all_status $ahead_behind]($style) '
-style = 'bold green'
-conflicted = '🏳'
-up_to_date = ''
-untracked = ' '
-ahead = '⇡${count}'
-diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
-stashed = ' '
-modified = ' '
-staged = '[++\($count\)](green)'
-renamed = '襁 '
-deleted = ' '
+style = "fg:teal"
+format = "[$modified$staged$untracked$renamed$deleted$conflicted$ahead_behind$stashed]($style) "
 
-# Shows kubernetes context and namespace
-[kubernetes]
-format = 'via [󱃾 $context\($namespace\)](bold purple) '
-disabled = false
+modified = "*"
+staged = "+"
+untracked = "?"
+renamed = "»"
+deleted = "✘"
+conflicted = "!"
+stashed = "≡"
 
-# ---
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
 
-[vagrant]
-disabled = true
+# ------------------------
+# Command Duration (time taken)
+# ------------------------
+[cmd_duration]
+format = "[$duration]($style) "
+style = "fg:peach"
 
-[docker_context]
-disabled = true
-
-[helm]
-disabled = false
-
+# ------------------------
+# Python (virtualenv ONLY)
+# ------------------------
 [python]
-symbol = '󰌠'
-python_binary = ['./venv/bin/python', 'python', 'python3', 'python2']
-format = '[//](black bold) [${symbol} ${pyenv_prefix}(${version} )(\($virtualenv\) )]($style) '
-
-
-[nodejs]
-disabled = true
-
-[ruby]
-disabled = true
-
-[terraform]
 disabled = false
+format = "[$virtualenv]($style) "
+style = "fg:sky"
+
+detect_extensions = []
+detect_files = []
+detect_folders = []
+python_binary = []
+
+# ------------------------
+# Conda (after venv)
+# ------------------------
+[conda]
+disabled = false
+format = "[$environment]($style) "
+style = "fg:sapphire"
+ignore_base = false
+
+# ------------------------
+# Catppuccin Mocha Palette
+# ------------------------
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo  = "#f2cdcd"
+pink      = "#f5c2e7"
+mauve     = "#cba6f7"
+red       = "#f38ba8"
+maroon    = "#eba0ac"
+peach     = "#fab387"
+yellow    = "#f9e2af"
+green     = "#a6e3a1"
+teal      = "#94e2d5"
+sky       = "#89dceb"
+sapphire  = "#74c7ec"
+blue      = "#89b4fa"
+lavender  = "#b4befe"
+text      = "#cdd6f4"
+subtext1  = "#bac2de"
+subtext0  = "#a6adc8"
+overlay2  = "#9399b2"
+overlay1  = "#7f849c"
+overlay0  = "#6c7086"
+surface2  = "#585b70"
+surface1  = "#45475a"
+surface0  = "#313244"
+base      = "#1e1e2e"
+mantle    = "#181825"
+crust     = "#11111b"
