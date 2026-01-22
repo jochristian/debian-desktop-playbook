@@ -25,5 +25,6 @@ podman: true
 lxc: false
 distrobox: true
 homebrew: true
+install_ohmyzsh: true
 
 reboot: false
