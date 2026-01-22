@@ -14,8 +14,8 @@
 #- import_tasks: tasks/postfix.yml
 #  tags: postfix
 
-- import_tasks: tasks/sshd.yml
-  tags: sshd
+- import_tasks: tasks/ssh.yml
+  tags: ssh
 
 - import_tasks: tasks/sudo.yml
   tags: sudo

@@ -1,0 +1,11 @@
+---
+- name: Remove SSH Server
+  apt:
+    name: openssh-server
+    state: absent
+    purge: true
+
+- name: Install SSH Client
+  apt:
+    name: openssh-client
+    state: present
