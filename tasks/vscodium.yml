@@ -8,11 +8,17 @@
 
 - name: Adding VSCodium repository
   copy:
-    src: files/vscodium/vscodium.list
-    dest: /etc/apt/sources.list.d
+    src: files/vscodium/vscodium.sources
+    dest: /etc/apt/sources.list.d/vscodium.sources
     owner: root
     group: root
     mode: '0644'
+  notify: update apt cache
+
+- name: Remove legacy VSCodium sources.list file
+  file:
+    path: /etc/apt/sources.list.d/vscodium.list
+    state: absent
   notify: update apt cache
 
 - name: Update APT cache

@@ -9,11 +9,17 @@
 
 - name: Adding Brave repository
   copy:
-    src: files/brave/brave.list
-    dest: /etc/apt/sources.list.d
+    src: files/brave/brave.sources
+    dest: /etc/apt/sources.list.d/brave.sources
     owner: root
     group: root
     mode: '0644'
+  notify: update apt cache
+
+- name: Remove legacy Brave sources.list file
+  file:
+    path: /etc/apt/sources.list.d/brave.list
+    state: absent
   notify: update apt cache
 
 - name: Update APT cache
