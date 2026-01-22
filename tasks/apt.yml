@@ -1,8 +1,13 @@
 ---
-- name: Add custom sources.list
-  template: 
-    src: apt/sources.list.j2
-    dest: /etc/apt/sources.list
+- name: Remove legacy sources.list file
+  ansible.builtin.file:
+    path: /etc/apt/sources.list
+    state: absent
+
+- name: Add custom sources file
+  template:
+    src: apt/debian.sources.j2
+    dest: /etc/apt/sources.list.d/debian.sources
     owner: root
     group: root
     mode: '0644'
