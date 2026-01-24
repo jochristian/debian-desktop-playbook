@@ -1,0 +1,29 @@
+---
+- name: Installing curl and gpg
+  apt:
+    name:
+      - curl
+      - gpg
+    state: present
+
+- name: Add Vivaldi GPG key
+  shell: curl -fsSL https://repo.vivaldi.com/archive/linux_signing_key.pub | gpg --dearmor | dd of=/usr/share/keyrings/vivaldi-browser.gpg
+  args:
+    creates: /usr/share/keyrings/vivaldi-browser.gpg
+
+- name: Adding Vivaldi repository
+  copy:
+    src: files/vivaldi/vivaldi.sources
+    dest: /etc/apt/sources.list.d/vivaldi.sources
+    owner: root
+    group: root
+    mode: '0644'
+  notify: update apt cache
+
+- name: Update APT cache
+  meta: flush_handlers
+
+- name: Installing Vivaldi
+  apt:
+    name: "vivaldi-stable"
+    state: present

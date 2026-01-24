@@ -12,7 +12,7 @@ Adapted for **Debian 13** (**Trixie**)
 - Many additional packages from the official repos (**LibreOffice**, **Firefox-ESR**, etc.)
 - Installs and configures **sudo**
 - **Flatpaks**: **Discord**, **Element**, **Signal**, **Raspberry Pi Imager**, **JDownloader**
-- External applications available: **VSCodium**, **Brave**
+- External applications available: **VSCodium**, **Brave**, **Vivaldi**
 - Gaming: **Steam**, **Wine**, **Minecraft**  and retro gaming emulators (**Mupen64Plus**, **Mednafen/Mednaffe**)
 - Targets **Intel**/**AMD** systems (CPU/GPU)
 - Installs **Docker**, **Podman**
@@ -98,6 +98,7 @@ distrobox
 homebrew
 flatpak (Multiple Flatpaks installed)
 brave (external)
+vivaldi (external)
 reboot
 ```
 
