@@ -3,4 +3,3 @@ homebrew_packages:
   - tldr
   - k9s
   - kubectl
-  - starship
