@@ -1,19 +1,19 @@
----
-- name: Configure GNOME Terminal Font
-  hosts: localhost
-  connection: local
+- name: Set GNOME Terminal Font
   tasks:
-    - name: Get the default GNOME Terminal profile UUID
+    - name: Get default profile UUID
       shell: "gsettings get org.gnome.Terminal.ProfilesList default | tr -d \"'\""
       register: terminal_profile_uuid
       changed_when: false
 
-    - name: Disable "Use system font" for the profile
+    - name: Disable system font usage
       dconf:
-        key: "/org/gnome/terminal/legacy/profiles:/:{{ terminal_profile_uuid.stdout }}/use-system-font"
+        key: "/org/gnome/terminal/legacy/profiles:/:{{ terminal_profile_uuid.stdout | trim }}/use-system-font"
         value: "false"
+        state: present
 
-    - name: Set Hack Nerd Font Mono 11 as the default font
+    - name: Apply Hack Nerd Font
       dconf:
-        key: "/org/gnome/terminal/legacy/profiles:/:{{ terminal_profile_uuid.stdout }}/font"
+        key: "/org/gnome/terminal/legacy/profiles:/:{{ terminal_profile_uuid.stdout | trim }}/font"
+        # The single quotes inside the double quotes are mandatory for dconf strings
         value: "'Hack Nerd Font Mono 11'"
+        state: present
