@@ -4,15 +4,6 @@
     name: zsh
     state: present
 
-- name: Install Starship
-  community.general.homebrew:
-    name: starship
-    state: present
-    path: /home/linuxbrew/.linuxbrew/bin
-  become: true
-  become_user: "{{ user_name }}"
-  when: install_starship and homebrew
-
 - name: Install Oh My Zsh
   git:
     repo: 'https://github.com/ohmyzsh/ohmyzsh.git'

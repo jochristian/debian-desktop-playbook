@@ -5,6 +5,9 @@
 - import_tasks: tasks/upgrade.yml
   tags: upgrade
 
+- import_tasks: tasks/packages.yml
+  tags: packages
+  
 - import_tasks: tasks/vim.yml
   tags: vim
 
