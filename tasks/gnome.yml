@@ -1,12 +1,19 @@
 ---
-- name: Set Gnome Terminal font
-  become: true
-  become_user: "{{ user_name }}"
-  shell: |
-    PROFILE=$(dbus-run-session gsettings get org.gnome.Terminal.Legacy.ProfilesList default | tr -d "'")
-    dbus-run-session gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${PROFILE}/ font 'Hack Nerd Font Mono 11'
-    dbus-run-session gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${PROFILE}/ use-custom-font true
-  args:
-    executable: /bin/bash
-  register: gnome_terminal_font_set
-  changed_when: gnome_terminal_font_set.rc == 0
+- name: Configure GNOME Terminal Font
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Get the default GNOME Terminal profile UUID
+      shell: "gsettings get org.gnome.Terminal.ProfilesList default | tr -d \"'\""
+      register: terminal_profile_uuid
+      changed_when: false
+
+    - name: Disable "Use system font" for the profile
+      dconf:
+        key: "/org/gnome/terminal/legacy/profiles:/:{{ terminal_profile_uuid.stdout }}/use-system-font"
+        value: "false"
+
+    - name: Set Hack Nerd Font Mono 11 as the default font
+      dconf:
+        key: "/org/gnome/terminal/legacy/profiles:/:{{ terminal_profile_uuid.stdout }}/font"
+        value: "'Hack Nerd Font Mono 11'"
