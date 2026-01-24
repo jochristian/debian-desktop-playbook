@@ -4,3 +4,4 @@ homebrew_packages:
   - k9s
   - kubectl
   - starship
+  - zsh-autosuggestions

@@ -43,6 +43,10 @@
       # Homebrew (if installed)
       if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        # zsh-autosuggestions
+        if [ -f "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+          source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+        fi
       fi
 
       # User configuration
