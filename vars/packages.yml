@@ -115,4 +115,5 @@ software_packages:
   - devscripts
   - configure-debian
   - zsh
+  - zram-tools
   - pfetch

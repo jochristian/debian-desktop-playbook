@@ -8,6 +8,10 @@
 - import_tasks: tasks/packages.yml
   tags: packages
 
+- import_tasks: tasks/zram.yml
+  tags: zram
+  when: use_zram
+
 - import_tasks: tasks/vim.yml
   tags: vim
   

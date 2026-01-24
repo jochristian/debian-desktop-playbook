@@ -20,3 +20,8 @@
   systemd:
     name: fail2ban
     state: restarted
+
+- name: restart zramswap
+  systemd:
+    name: zramswap
+    state: restarted

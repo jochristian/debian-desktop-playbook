@@ -1,0 +1,21 @@
+---
+- name: Install zram-tools
+  apt:
+    name: zram-tools
+    state: present
+
+- name: Configure zram-tools
+  template:
+    src: templates/zram/zramswap.j2
+    dest: /etc/default/zramswap
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart zramswap
+
+- name: Enable and start zramswap service
+  systemd:
+    name: zramswap
+    enabled: yes
+    state: started
+
