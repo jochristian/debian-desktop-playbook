@@ -1,5 +1,12 @@
-- name: Set GNOME Terminal Font
-  tasks:
+---
+- name: Install GNOME Desktop
+  apt:
+    name: "{{ gnome_packages }}"
+    state: present
+    update_cache: true
+
+- name: Configure GNOME Terminal Font
+  block:
     - name: Get default profile UUID
       shell: "gsettings get org.gnome.Terminal.ProfilesList default | tr -d \"'\""
       register: terminal_profile_uuid
@@ -14,6 +21,7 @@
     - name: Apply Hack Nerd Font
       dconf:
         key: "/org/gnome/terminal/legacy/profiles:/:{{ terminal_profile_uuid.stdout | trim }}/font"
-        # The single quotes inside the double quotes are mandatory for dconf strings
         value: "'Hack Nerd Font Mono 11'"
         state: present
+  become: true
+  become_user: "{{ user_name }}"
