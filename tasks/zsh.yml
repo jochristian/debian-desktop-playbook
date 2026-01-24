@@ -1,9 +1,7 @@
 ---
 - name: Install Zsh
   apt:
-    name:
-      - zsh
-      - zsh-completions
+    name: zsh
     state: present
 
 - name: Create basic .zshrc with Starship
@@ -17,7 +15,6 @@
       eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
       # Basic Zsh config
-      fpath+=(/usr/share/zsh-completions)
       autoload -Uz compinit
       compinit
       
