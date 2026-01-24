@@ -7,10 +7,16 @@
 
 - import_tasks: tasks/packages.yml
   tags: packages
-  
+
 - import_tasks: tasks/vim.yml
   tags: vim
+  
+- import_tasks: tasks/sudo.yml
+  tags: sudo
 
+- import_tasks: tasks/ntp.yml
+  tags: ntp
+  
 - import_tasks: tasks/dotfiles.yml
   tags: dotfiles
 

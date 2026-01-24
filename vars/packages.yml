@@ -33,7 +33,6 @@ software_packages:
   - sshpass
   - nmap
   - nethogs
-  - nfs-common
   - wget
   - usbutils
   - curl
@@ -48,7 +47,6 @@ software_packages:
   - tree
   - telnet
   - ipcalc
-  - ncftp
   - apt-listchanges
   - apt-file
   - debian-goodies
@@ -117,3 +115,4 @@ software_packages:
   - devscripts
   - configure-debian
   - zsh
+  - pfetch
