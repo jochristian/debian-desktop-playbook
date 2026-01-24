@@ -30,6 +30,18 @@
 - import_tasks: tasks/fonts.yml
   tags: fonts
 
+- import_tasks: tasks/kde.yml
+  tags: kde
+  when: use_kde | default(false)
+
+- import_tasks: tasks/gnome.yml
+  tags: gnome
+  when: use_gnome | default(false)
+
+- import_tasks: tasks/xfce.yml
+  tags: xfce
+  when: use_xfce | default(false)
+
 - import_tasks: tasks/virt.yml
   tags: virt
   when: use_kvm

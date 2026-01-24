@@ -13,7 +13,7 @@ ntp_fallback_servers: 0.debian.pool.ntp.org 1.debian.pool.ntp.org 2.debian.pool.
 
 #use_kde: false
 #use_xfce: false
-#use_gnome: true
+use_gnome: true
 
 use_kvm: false
 flatpak: true

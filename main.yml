@@ -10,7 +10,7 @@
     - vars/fonts.yml
     #- vars/xorg.yml
     #- vars/kde.yml
-    #- vars/gnome.yml
+    - vars/gnome.yml
     #- vars/xfce.yml
     - vars/packages.yml
     - vars/gaming.yml
