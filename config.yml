@@ -15,7 +15,7 @@ user_group_name: jochristian
 # ------------------------------------------------------------------------------
 # 2. DESKTOP ENVIRONMENT
 # ------------------------------------------------------------------------------
-# Select which Desktop Environment(s) to install.
+# Select which Desktop Environment(s) that is used.
 # Set to 'true' to enable, 'false' to disable.
 use_gnome: true
 use_kde: false
@@ -50,7 +50,6 @@ homebrew: true      # Install Homebrew (Linuxbrew)
 podman: true        # Install Podman
 docker: false       # Install Docker
 distrobox: true     # Install Distrobox
-lxc: false          # Install LXC
 
 # Virtualization (KVM/QEMU)
 use_kvm: false

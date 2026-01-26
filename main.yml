@@ -17,8 +17,8 @@
     - vars/virt.yml
     - vars/flatpak.yml
     - vars/podman.yml
-    - vars/lxc.yml
     - vars/homebrew.yml
+
 
   handlers:
     - name: Include handlers

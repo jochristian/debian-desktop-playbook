@@ -17,7 +17,6 @@ Adapted for **Debian 13** (**Trixie**)
 - Flatpak Games: **Minecraft**, **SuperTuxKart**, **Veloren**, **Xonotic**, **0 A.D.**, **ETLegacy**, **Luanti**
 - Targets **Intel**/**AMD** systems (CPU/GPU)
 - Installs **Docker**, **Podman**
-- Deploys **LXC**
 - Also installs **Distrobox**
 - Installs **Homebrew**
 - Virtualization packages (**libvirt/QEMU/Virt-Manager**)
@@ -114,7 +113,6 @@ flatpak (Multiple Flatpaks installed)
 pipx
 docker
 podman
-lxc
 distrobox
 firewall
 reboot

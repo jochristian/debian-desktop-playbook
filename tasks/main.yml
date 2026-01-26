@@ -95,9 +95,6 @@
   tags: podman
   when: podman
 
-- import_tasks: tasks/lxc.yml
-  tags: lxc
-  when: lxc
 
 - import_tasks: tasks/distrobox.yml
   tags: distrobox
