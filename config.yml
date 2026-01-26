@@ -1,0 +1,69 @@
+---
+# ==============================================================================
+#  DEBIAN DESKTOP PLAYBOOK CONFIGURATION
+# ==============================================================================
+# This file controls the behavior of the Ansible playbook.
+# Modify the settings below to customize your installation.
+
+# ------------------------------------------------------------------------------
+# 1. USER SETTINGS
+# ------------------------------------------------------------------------------
+# The primary user account to configure.
+user_name: jochristian
+user_group_name: jochristian
+
+# ------------------------------------------------------------------------------
+# 2. DESKTOP ENVIRONMENT
+# ------------------------------------------------------------------------------
+# Select which Desktop Environment(s) to install.
+# Set to 'true' to enable, 'false' to disable.
+use_gnome: true
+use_kde: false
+use_xfce: false
+
+# ------------------------------------------------------------------------------
+# 3. CORE SYSTEM SETTINGS
+# ------------------------------------------------------------------------------
+# Port for SSH access (default: 22)
+ssh_port: 22
+
+# NTP Servers for time synchronization
+ntp_servers: 0.no.pool.ntp.org 1.no.pool.ntp.org 2.no.pool.ntp.org
+ntp_fallback_servers: 0.debian.pool.ntp.org 1.debian.pool.ntp.org 2.debian.pool.ntp.org
+
+# Enable zram for improved memory performance (SWAP in RAM)
+use_zram: true
+
+# Enable Firewall (UFW)
+use_firewall: true
+fail2ban_sshd_port: 22
+
+# ------------------------------------------------------------------------------
+# 4. SOFTWARE & FEATURES
+# ------------------------------------------------------------------------------
+# Package Managers & Containers
+flatpak: true       # Install Flatpak support
+homebrew: true      # Install Homebrew (Linuxbrew)
+podman: true        # Install Podman
+docker: false       # Install Docker
+distrobox: true     # Install Distrobox
+lxc: false          # Install LXC
+
+# Virtualization (KVM/QEMU)
+use_kvm: false
+
+# Application Collections
+external: true      # Install external apps (VS Code, Brave, Vivaldi, etc.)
+gaming: false       # Install gaming tools (Steam, Lutris, etc.)
+
+# Shell Enhancements
+install_starship: true
+
+# ------------------------------------------------------------------------------
+# 5. ADVANCED / PLAYBOOK OPTIONS
+# ------------------------------------------------------------------------------
+# Automatically reboot after the playbook completes?
+reboot: false
+
+# Sudo/Become method flags (usually leave as "-")
+ansible_become_flags: "-"
