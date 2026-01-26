@@ -22,6 +22,7 @@ Adapted for **Debian 13** (**Trixie**)
 - Installs **Homebrew**
 - Virtualization packages (**libvirt/QEMU/Virt-Manager**)
 - Sets up **zram**
+- Installs the **XanMod Kernel** (optional)
 - Installs and configures **Zsh**
 - (**Optional**) Installs and sets up **UFW** (**Deny** incoming, **Allow** outgoing, allow **SSH** access)
 - Most software comes from the main repos!
@@ -30,6 +31,10 @@ Adapted for **Debian 13** (**Trixie**)
 External applications are only installed when the "external" variable is set to true.   
 Keep that in mind when using this **Playbook**.   
 I made the decision to make these not be installed by default since I personally perefer things from the official repo or installed as a **Flatpak**.
+
+## Note on XanMod Kernel:
+The XanMod kernel is an optional high-performance Linux kernel. This playbook installs the `x64v3` version, which requires a CPU with **AVX2** support (roughly Intel Haswell or AMD Excavator/Ryzen and newer).
+Ensure you have **Secure Boot disabled** or have a way to sign the kernel modules, as XanMod is not signed by Debian's keys.
 
 ## Screenshot:
 <img width="1920" height="1080" alt="debian-kde-desktop" src="https://github.com/user-attachments/assets/4f62731d-39e2-4ad9-93fa-20ac868351f4" />
@@ -87,6 +92,7 @@ apt
 upgrade
 packages
 zram
+xanmod
 vim
 sudo
 ntp

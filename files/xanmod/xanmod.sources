@@ -1,0 +1,5 @@
+Types: deb
+URIs: http://deb.xanmod.org
+Suites: releases
+Components: main
+Signed-By: /usr/share/keyrings/xanmod-archive-keyring.gpg

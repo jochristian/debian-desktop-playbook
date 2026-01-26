@@ -34,6 +34,9 @@ ntp_fallback_servers: 0.debian.pool.ntp.org 1.debian.pool.ntp.org 2.debian.pool.
 # Enable zram for improved memory performance (SWAP in RAM)
 use_zram: true
 
+# Enable XanMod Kernel (High-performance Linux kernel, installs x64v3 - requires AVX2 support)
+use_xanmod: false
+
 # Enable Firewall (UFW)
 use_firewall: true
 fail2ban_sshd_port: 22

@@ -1,0 +1,29 @@
+---
+- name: Ensure curl and gpg are installed
+  apt:
+    name:
+      - curl
+      - gpg
+    state: present
+
+- name: Add XanMod GPG key
+  shell: curl -fSsL https://dl.xanmod.org/archive.key | gpg --dearmor -o /usr/share/keyrings/xanmod-archive-keyring.gpg
+  args:
+    creates: /usr/share/keyrings/xanmod-archive-keyring.gpg
+
+- name: Add XanMod repository
+  copy:
+    src: files/xanmod/xanmod.sources
+    dest: /etc/apt/sources.list.d/xanmod.sources
+    owner: root
+    group: root
+    mode: '0644'
+  notify: update apt cache
+
+- name: Update APT cache
+  meta: flush_handlers
+
+- name: Install XanMod Kernel (x64v3)
+  apt:
+    name: linux-xanmod-x64v3
+    state: present
