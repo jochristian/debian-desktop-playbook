@@ -50,9 +50,16 @@ The **dotfiles** tasks installs my own config files. This might not be what you 
 - Take a look at the **dotfiles** role, since you most likely want to use your own dots!
 
 ## Usage:
+This playbook is meant to be run directly on the host.
+
 1. Clone/download this repository
 2. Unpack/cd into the directory
-3. Run
+3. Run the bootstrap script:
+```shell
+$ chmod +x bootstrap.sh
+$ ./bootstrap.sh
+```
+Or run the playbook directly:
 ```shell
 $ ansible-playbook main.yml (-Kk)
 ```
