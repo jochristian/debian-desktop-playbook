@@ -2,24 +2,27 @@
 Based on the excellent work by GitHub user [jhx0](https://github.com/jhx0).
 
 # debian-desktop-playbook
-A personal **Ansible** **Playbook** to deploy/configure a **Debian** desktop system to my needs. 
+A personal **Ansible** **Playbook** to deploy and configure a **Debian** desktop system to my needs. 
 **Note**: This playbook assumes a Desktop Environment is already installed.
 
 Adapted for **Debian 13** (**Trixie**)
 
 ## Features:
 - **Prerequisite**: A **Debian 13** (**Trixie**) system with a Desktop Environment (**KDE**, **Gnome**, **Xfce**, etc.) already installed.
-- Many additional packages from the official repos (**LibreOffice**, **Firefox-ESR**, etc.)
+- Many additional packages from the official repos (**Firefox-ESR**, **VLC**, **Synaptic**, etc.)
 - Installs and configures **sudo**
-- **Flatpaks**: **Discord**, **Element**, **Signal**, **Raspberry Pi Imager**, **JDownloader**
-- External applications available: **VSCodium**, **Brave**, **Vivaldi**
-- Gaming: **Steam**, **Wine**, **Minecraft**  and retro gaming emulators (**Mupen64Plus**, **Mednafen/Mednaffe**)
+- **Flatpaks**: **Discord**, **Signal**, **Raspberry Pi Imager**
+- External applications available: **VS Code**, **Brave**, **Vivaldi**
+- Gaming: **Steam**, **Wine**, **GZDoom** and retro gaming emulators (**Mupen64Plus**, **Mednafen/Mednaffe**, **Dosbox**)
+- Flatpak Games: **Minecraft**, **SuperTuxKart**, **Veloren**, **Xonotic**, **0 A.D.**, **ETLegacy**, **Luanti**
 - Targets **Intel**/**AMD** systems (CPU/GPU)
 - Installs **Docker**, **Podman**
 - Deploys **LXC**
 - Also installs **Distrobox**
 - Installs **Homebrew**
 - Virtualization packages (**libvirt/QEMU/Virt-Manager**)
+- Sets up **zram**
+- Installs and configures **Zsh**
 - (**Optional**) Installs and sets up **UFW** (**Deny** incoming, **Allow** outgoing, allow **SSH** access)
 - Most software comes from the main repos!
 
@@ -65,7 +68,7 @@ $ ansible-playbook main.yml --tags all (-Kk)
 ```
 2. Only run a subset of tasks
 ```bash
-$ ansible-playbook main.yml --tags "apt,vim,sysctl,grub,reboot" (-Kk)
+$ ansible-playbook main.yml --tags "apt,vim,sudo,zsh,reboot" (-Kk)
 ```
 3. Run only one task
 ```bash
@@ -75,30 +78,32 @@ All available **Tags**:
 ```bash
 apt
 upgrade
-vim
-dotfiles
-sshd
-sudo
-groups
-ntp
-sysctl
-grub
-fstrim
 packages
+zram
+vim
+sudo
+ntp
+dotfiles
+homebrew
+zsh
+groups
 fontconfig
 fonts
+kde
+gnome
+xfce
+virt
+brave (external)
 gaming
-vscode
+vscode (external)
+vivaldi (external)
+flatpak (Multiple Flatpaks installed)
 pipx
-firewall
 docker
 podman
 lxc
 distrobox
-homebrew
-flatpak (Multiple Flatpaks installed)
-brave (external)
-vivaldi (external)
+firewall
 reboot
 ```
 
